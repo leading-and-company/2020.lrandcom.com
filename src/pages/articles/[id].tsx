@@ -72,14 +72,14 @@ const StyledComponent = styled(Component)`
   }
   > .banner {
     margin: 0 auto;
-    width: 60rem;
+    width: 50rem;
     ${styles.media.sp} {
       width: calc(100% - 6rem);
     }
   }
   > .body {
     margin: 6rem auto;
-    width: 60rem;
+    width: 50rem;
     overflow: hidden;
     font-size: 1.6rem;
     letter-spacing: 0.1rem;
