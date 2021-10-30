@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { api } from '~/api'
@@ -11,26 +11,55 @@ import { styles } from '~/utils/styles'
 import { usePageScroll } from '~/hooks/usePageScroll'
 import Header from '~/components/article/Header'
 import Head from '~/components/base/Head'
+import Link from 'next/link'
+import Button from '~/components/base/Button'
+import { useRouter } from 'next/router'
 
 type ContainerProps = ArticleTypes
 type ComponentProps = { className: string } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
-  <div className={props.className}>
-    <Head
-      title={`${props.title} / リーディング＆カンパニー株式会社`}
-      image={props.thumbnail.url}
-      type="article"
-    />
-    <Header
-      className="header"
-      title={props.title}
-      thumbnail={props.thumbnail.url}
-      publishedAt={props.publishedAt}
-    />
-    <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
-  </div>
-)
+const Component: React.FC<ComponentProps> = props => {
+  const { asPath } = useRouter()
+
+  const show = useMemo(() => {
+    return asPath !== '/articles/starbucks_founders'
+  }, [asPath])
+
+  return (
+    <div className={props.className}>
+      <Head
+        title={`${props.title} / リーディング＆カンパニー株式会社`}
+        image={props.thumbnail.url}
+        type="article"
+      />
+      <Header
+        className="header"
+        title={props.title}
+        thumbnail={props.thumbnail.url}
+        publishedAt={props.publishedAt}
+      />
+      {show && (
+        <div className="banner">
+          <Link href="/articles/[id]" as="/articles/starbucks_founders">
+            <a>
+              <Button className="button">本を出版しました！！</Button>
+            </a>
+          </Link>
+        </div>
+      )}
+      <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
+      {show && (
+        <div className="banner">
+          <Link href="/articles/[id]" as="/articles/starbucks_founders">
+            <a>
+              <Button className="button">本を出版しました！！</Button>
+            </a>
+          </Link>
+        </div>
+      )}
+    </div>
+  )
+}
 
 const StyledComponent = styled(Component)`
   margin: 0 auto;
@@ -41,8 +70,15 @@ const StyledComponent = styled(Component)`
   > .header {
     width: 100%;
   }
-  > .body {
+  > .banner {
     margin: 0 auto;
+    width: 60rem;
+    ${styles.media.sp} {
+      width: calc(100% - 6rem);
+    }
+  }
+  > .body {
+    margin: 6rem auto;
     width: 60rem;
     overflow: hidden;
     font-size: 1.6rem;
