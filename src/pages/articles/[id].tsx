@@ -40,9 +40,14 @@ const Component: React.FC<ComponentProps> = props => {
       />
       {show && (
         <div className="banner">
+          <div className="title">Kindleで本を出版しました！</div>
+          <div className="text">
+            2021年10月にKindle
+            ダイレクト・パブリッシングから「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？読書の生涯リターンは25%以上」という本を出版致しました。
+          </div>
           <Link href="/articles/[id]" as="/articles/starbucks_founders">
             <a>
-              <Button className="button">本を出版しました！！</Button>
+              <Button className="button">本の詳細はこちらから！！</Button>
             </a>
           </Link>
         </div>
@@ -50,9 +55,14 @@ const Component: React.FC<ComponentProps> = props => {
       <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
       {show && (
         <div className="banner">
+          <div className="title">Kindleで本を出版しました！</div>
+          <div className="text">
+            2021年10月にKindle
+            ダイレクト・パブリッシングから「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？読書の生涯リターンは25%以上」という本を出版致しました。
+          </div>
           <Link href="/articles/[id]" as="/articles/starbucks_founders">
             <a>
-              <Button className="button">本を出版しました！！</Button>
+              <Button className="button">本の詳細はこちらから！！</Button>
             </a>
           </Link>
         </div>
@@ -71,10 +81,27 @@ const StyledComponent = styled(Component)`
     width: 100%;
   }
   > .banner {
+    font-size: 1.6rem;
     margin: 0 auto;
     width: 50rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6rem 4rem;
     ${styles.media.sp} {
       width: calc(100% - 6rem);
+    }
+    > .title {
+      font-weight: bold;
+      letter-spacing: 0.2rem;
+      transform: skew(-5deg);
+    }
+    > .text {
+      margin-top: 4rem;
+      opacity: 0.65;
+      line-height: 2;
+    }
+    > a {
+      display: inline-block;
+      margin-top: 4rem;
     }
   }
   > .body {
