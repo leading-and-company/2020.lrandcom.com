@@ -42,8 +42,7 @@ const Component: React.FC<ComponentProps> = props => {
         <div className="banner">
           <div className="title">Kindleで本を出版しました！</div>
           <div className="text">
-            2021年10月にKindle
-            ダイレクト・パブリッシングから「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？読書の生涯リターンは25%以上」という本を出版致しました。
+            2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
           </div>
           <Link href="/articles/[id]" as="/articles/starbucks_founders">
             <a>
@@ -57,8 +56,7 @@ const Component: React.FC<ComponentProps> = props => {
         <div className="banner">
           <div className="title">Kindleで本を出版しました！</div>
           <div className="text">
-            2021年10月にKindle
-            ダイレクト・パブリッシングから「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？読書の生涯リターンは25%以上」という本を出版致しました。
+            2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
           </div>
           <Link href="/articles/[id]" as="/articles/starbucks_founders">
             <a>
