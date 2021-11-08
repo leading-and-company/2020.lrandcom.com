@@ -114,6 +114,7 @@ const StyledComponent = styled(Component)`
     p {
       ${styles.mixins.lhCrop(2)}
       overflow: hidden;
+      width: 100%;
     }
     span {
       opacity: 0.65;
