@@ -50,6 +50,7 @@ class MyDocument extends Document<Props> {
           {this.props.styleTags}
         </Head>
         <body>
+          <script> </script>
           <Main />
           <NextScript />
         </body>
