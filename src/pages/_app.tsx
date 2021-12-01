@@ -5,11 +5,10 @@ import { AppProps } from 'next/app'
 import Layout from '~/layouts/default'
 import Router from 'next/router'
 import { gtag } from '~/lib/gtag'
-import { GlobalStyle } from '~/utils/styles'
+import '~/utils/styles/global.css'
 
 const _App: React.FC<AppProps> = props => (
   <>
-    <GlobalStyle />
     <Provider store={store}>
       <Layout {...props} />
     </Provider>
