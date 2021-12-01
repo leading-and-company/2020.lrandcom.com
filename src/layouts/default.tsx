@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider, useSelector } from 'react-redux'
 import store, { StateTypes } from '~/store'
 import { AppProps } from 'next/app'
-import { GlobalStyle, styles } from '~/utils/styles'
+import { styles } from '~/utils/styles'
 import Slug from '~/components/default/Slug'
 import Noise from '~/components/base/Noise'
 import UpperLeft from '~/components/default/UpperLeft'
@@ -19,7 +19,6 @@ type ComponentProps = {
 
 const Component: React.FC<ComponentProps> = props => (
   <>
-    <GlobalStyle />
     <Provider store={store}>
       <div className={props.className}>
         <Noise className="noise" />
