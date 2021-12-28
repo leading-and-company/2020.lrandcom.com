@@ -7,5 +7,6 @@ export default {
   twitter: 'https://twitter.com/4chikara',
   instagram: 'https://www.instagram.com/chikara_natsume/',
   youtube:
-    'https://www.youtube.com/channel/UCJkz6NUHgsNHoe_qmw_A_OA?sub_confirmation=1'
+    'https://www.youtube.com/channel/UCJkz6NUHgsNHoe_qmw_A_OA?sub_confirmation=1',
+  spotify: 'https://open.spotify.com/show/7ALBsUq49LgunYW5gqBNVE'
 }

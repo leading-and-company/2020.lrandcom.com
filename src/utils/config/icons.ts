@@ -9,7 +9,8 @@ import {
   faFacebookSquare,
   faTwitter,
   faInstagram,
-  faYoutube
+  faYoutube,
+  faSpotify
 } from '@fortawesome/free-brands-svg-icons'
 
 export default {
@@ -21,5 +22,6 @@ export default {
   facebook: faFacebookSquare,
   twitter: faTwitter,
   instagram: faInstagram,
-  youtube: faYoutube
+  youtube: faYoutube,
+  spotify: faSpotify
 }

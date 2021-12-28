@@ -35,8 +35,8 @@ const Component: React.FC<ComponentProps> = props => (
         </ABlank>
       </li>
       <li>
-        <ABlank className="yt" href={config.url.youtube}>
-          <FontAwesomeIcon icon={config.icons.youtube} />
+        <ABlank className="yt" href={config.url.spotify}>
+          <FontAwesomeIcon icon={config.icons.spotify} />
         </ABlank>
       </li>
     </ul>
