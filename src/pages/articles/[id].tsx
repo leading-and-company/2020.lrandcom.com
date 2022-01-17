@@ -111,7 +111,7 @@ const StyledComponent = styled(Component)`
     font-size: 1.6rem;
     letter-spacing: 0.1rem;
     ${styles.media.sp} {
-      width: calc(100% - 6rem);
+      width: 100%;
     }
     p {
       ${styles.mixins.lhCrop(2)}
