@@ -40,7 +40,7 @@ const Component: React.FC<ComponentProps> = props => {
       />
       {show && (
         <div className="banner">
-          <div className="title">Kindleで本を出版しました！</div>
+          <div className="title">本を出版しました！</div>
           <div className="text">
             2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
           </div>
