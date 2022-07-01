@@ -5,8 +5,22 @@ import { GA_TRACKING_ID } from '~/lib/gtag'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import * as React from 'react'
+import { ServerStyleSheet } from 'styled-components'
 
 class _Document extends Document<{}> {
+  static async getInitialProps(ctx: any) {
+    // Step 1: Create an instance of ServerStyleSheet
+    const sheet = new ServerStyleSheet()
+    // Step 2: Retrieve styles from components in the page
+    const page = ctx.renderPage((App: any) => (props: any) =>
+      sheet.collectStyles(<App {...props} />)
+    )
+    // Step 3: Extract the styles as <style> tags
+    const styleTags = sheet.getStyleElement()
+    // Step 4: Pass styleTags as a prop
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps, ...page, styleTags }
+  }
   render(): React.ReactElement {
     return (
       <Html lang="ja">
