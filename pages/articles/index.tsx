@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/camelcase */
+import { GetStaticProps } from 'next'
 import * as React from 'react'
-import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSlug } from '~/store/header'
-import { ArticleTypes } from '~/types'
+import styled from 'styled-components'
+
 import { api } from '~/api'
 import Article from '~/components/articles/Article'
-import { GetStaticProps } from 'next'
-import { usePageScroll } from '~/hooks/usePageScroll'
-import { styles } from '~/utils/styles'
-import { StateTypes } from '~/store'
 import Head from '~/components/base/Head'
+import { usePageScroll } from '~/hooks/usePageScroll'
+import { StateTypes } from '~/store'
+import { setSlug } from '~/store/header'
+import { ArticleTypes } from '~/types'
 import { config } from '~/utils/config'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   articles: ArticleTypes[]
@@ -21,17 +21,17 @@ type Props = {
   sp: boolean
 } & ContainerProps
 
-const Component: React.FC<Props> = props => (
+const Component: React.FC<Props> = (props) => (
   <div className={props.className}>
     <Head
-      title="記事を読む / リーディング＆カンパニー株式会社"
       image={`${config.url.production}/images/base/ogp.png`}
+      title="記事を読む / リーディング＆カンパニー株式会社"
       type="website"
     />
-    {props.articles.map(article => (
+    {props.articles.map((article) => (
       <React.Fragment key={article.id}>
         {props.sp && <div className="divider" />}
-        <Article className="article" article={article} />
+        <Article article={article} className="article" />
       </React.Fragment>
     ))}
     {props.sp && (
@@ -83,7 +83,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const dispatch = useDispatch()
   dispatch(setSlug('/ARTICLES'))
   usePageScroll()
@@ -100,8 +100,8 @@ export const getStaticProps: GetStaticProps = async () => {
   })
   return {
     props: {
-      articles: filtered
+      articles: filtered,
     },
-    revalidate: 10
+    revalidate: 10,
   }
 }

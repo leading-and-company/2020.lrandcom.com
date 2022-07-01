@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
+
 import { animations } from '~/utils/animations'
 import { styles } from '~/utils/styles'
 
@@ -7,20 +8,20 @@ type ContainerProps = {
   className: string
 }
 type ComponentProps = {
+  out: () => void
+  over: () => void
   refs: {
     button: React.MutableRefObject<HTMLButtonElement | null>
     text: React.MutableRefObject<HTMLSpanElement | null>
   }
-  over: () => void
-  out: () => void
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <button
-    className={props.className}
     ref={props.refs.button}
-    onMouseOver={props.over}
+    className={props.className}
     onMouseOut={props.out}
+    onMouseOver={props.over}
   >
     <span ref={props.refs.text}>{props.children}</span>
   </button>
@@ -38,10 +39,10 @@ const StyledComponent = styled(Component)`
   transform: skew(-3.5deg);
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const refs = {
     button: useRef<HTMLButtonElement>(null),
-    text: useRef<HTMLSpanElement>(null)
+    text: useRef<HTMLSpanElement>(null),
   }
 
   const over = (): void => {
@@ -71,7 +72,7 @@ const Container: React.FC<ContainerProps> = props => {
       )
     }
   }
-  return <StyledComponent refs={refs} over={over} out={out} {...props} />
+  return <StyledComponent out={out} over={over} refs={refs} {...props} />
 }
 
 export default Container

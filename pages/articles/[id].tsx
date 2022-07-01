@@ -1,24 +1,24 @@
-/* eslint-disable @typescript-eslint/camelcase */
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { api } from '~/api'
 import { useDispatch } from 'react-redux'
+import styled from 'styled-components'
+
+import { api } from '~/api'
+import Header from '~/components/article/Header'
+import Button from '~/components/base/Button'
+import Head from '~/components/base/Head'
+import { usePageScroll } from '~/hooks/usePageScroll'
 import { setSlug } from '~/store/header'
 import { ArticleTypes } from '~/types'
 // import { functions } from '~/utils/functions'
 import { styles } from '~/utils/styles'
-import { usePageScroll } from '~/hooks/usePageScroll'
-import Header from '~/components/article/Header'
-import Head from '~/components/base/Head'
-import Link from 'next/link'
-import Button from '~/components/base/Button'
-import { useRouter } from 'next/router'
 
 type ContainerProps = ArticleTypes
 type ComponentProps = { className: string } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => {
+const Component: React.FC<ComponentProps> = (props) => {
   const { asPath } = useRouter()
 
   const show = useMemo(() => {
@@ -28,15 +28,15 @@ const Component: React.FC<ComponentProps> = props => {
   return (
     <div className={props.className}>
       <Head
-        title={`${props.title} / リーディング＆カンパニー株式会社`}
         image={props.thumbnail.url}
+        title={`${props.title} / リーディング＆カンパニー株式会社`}
         type="article"
       />
       <Header
         className="header"
-        title={props.title}
-        thumbnail={props.thumbnail.url}
         publishedAt={props.publishedAt}
+        thumbnail={props.thumbnail.url}
+        title={props.title}
       />
       {show && (
         <div className="banner">
@@ -44,7 +44,7 @@ const Component: React.FC<ComponentProps> = props => {
           <div className="text">
             2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
           </div>
-          <Link href="/articles/[id]" as="/articles/starbucks_founders">
+          <Link as="/articles/starbucks_founders" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
@@ -58,7 +58,7 @@ const Component: React.FC<ComponentProps> = props => {
           <div className="text">
             2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
           </div>
-          <Link href="/articles/[id]" as="/articles/starbucks_founders">
+          <Link as="/articles/starbucks_founders" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
@@ -141,7 +141,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const dispatch = useDispatch()
   dispatch(setSlug(`/${props.id.toUpperCase()}`))
   usePageScroll()
@@ -150,20 +150,20 @@ const Container: React.FC<ContainerProps> = props => {
 
 export default Container
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id
-  const { title, thumbnail, publishedAt, body } = await api.getArticle({
-    id: (id as string) || ''
+  const { body, publishedAt, thumbnail, title } = await api.getArticle({
+    id: (id as string) || '',
   })
   return {
     props: {
+      body,
       id: id || '',
-      title,
-      thumbnail,
       publishedAt,
-      body
+      thumbnail,
+      title,
     },
-    revalidate: 10
+    revalidate: 10,
   }
 }
 

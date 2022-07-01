@@ -7,12 +7,12 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <a
     className={props.className}
     href={props.href}
-    target="_blank"
     rel="noopener noreferrer"
+    target="_blank"
   >
     {props.children}
   </a>
@@ -20,7 +20,7 @@ const Component: React.FC<ComponentProps> = props => (
 
 const StyledComponent = styled(Component)``
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

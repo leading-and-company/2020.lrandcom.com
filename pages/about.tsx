@@ -1,20 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import { setSlug } from '~/store/header'
-import Logo from '~/components/about/Logo'
-import Lead from '~/components/about/lead'
-import Thumbnail from '~/components/about/Thumbnail'
-import Outline from '~/components/about/Outline'
-import OurClient from '~/components/about/OurClient'
-import Email from '~/components/about/Email'
-import Button from '~/components/base/Button'
-import { usePageScroll } from '~/hooks/usePageScroll'
-import { styles } from '~/utils/styles'
-import { StateTypes } from '~/store'
-import { config } from '~/utils/config'
-import Head from '~/components/base/Head'
 import Link from 'next/link'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
+
+import Email from '~/components/about/Email'
+import Lead from '~/components/about/lead'
+import Logo from '~/components/about/Logo'
+import OurClient from '~/components/about/OurClient'
+import Outline from '~/components/about/Outline'
+import Button from '~/components/base/Button'
+import Head from '~/components/base/Head'
+import { usePageScroll } from '~/hooks/usePageScroll'
+import { StateTypes } from '~/store'
+import { setSlug } from '~/store/header'
+import { config } from '~/utils/config'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   className: string
@@ -23,11 +23,11 @@ type ComponentProps = {
   sp: boolean
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <Head
-      title="サービス・会社概要 / リーディング＆カンパニー株式会社"
       image={`${config.url.production}/images/base/ogp.png`}
+      title="サービス・会社概要 / リーディング＆カンパニー株式会社"
       type="website"
     />
     <Logo className="logo" />
@@ -41,7 +41,7 @@ const Component: React.FC<ComponentProps> = props => (
     {/* <div className="margin line" /> */}
     <div className="wrapper">
       <h2>記事コンテンツの作成</h2>
-      <img src="/images/about/article.jpg" alt="" />
+      <img alt="" src="/images/about/article.jpg" />
       <div className="text marginTop">
         リーディング＆カンパニーでは、こちらの弊社独自で作成している記事のような一つの物事を複数の別の視点から捉えて書く記事コンテンツの作成を得意としています。
         <br />
@@ -57,7 +57,7 @@ const Component: React.FC<ComponentProps> = props => (
         <br />
         リーディング＆カンパニーでは、企業が伝えたいメッセージを汲み取り、大量のリサーチと取材を繰り返しながら、一般の方々に分かりやすく伝わる記事コンテンツを作成していきます。
       </div>
-      <Link href="/articles/[id]" as="/articles/create_contents">
+      <Link as="/articles/create_contents" href="/articles/[id]">
         <a className="marginTop">
           <Button className="button">詳しくはこちらから</Button>
         </a>
@@ -67,7 +67,7 @@ const Component: React.FC<ComponentProps> = props => (
     <div className="margin line" />
     <div className="wrapper">
       <h2>マーケティング・PRチーム育成支援</h2>
-      <img src="/images/about/writing.jpg" alt="" />
+      <img alt="" src="/images/about/writing.jpg" />
       <div className="text marginTop">
         マーケティングやPRの能力を身につける一番の近道は、文章を書く力を身につけることです。
         <br />
@@ -88,7 +88,7 @@ const Component: React.FC<ComponentProps> = props => (
     <div className="margin line" />
     <div className="wrapper">
       <h2>ウェブサイト制作 </h2>
-      <img src="/images/about/website.jpg" alt="" />
+      <img alt="" src="/images/about/website.jpg" />
       <div className="text marginTop">
         会社が面白そうかどうかは、その会社のウェブサイトを見れば大体のことは分かります。
         <br />
@@ -112,7 +112,7 @@ const Component: React.FC<ComponentProps> = props => (
     <div className="margin line" />
     <div className="wrapper">
       <h2>映像制作</h2>
-      <img src="/images/about/movie.jpg" alt="" />
+      <img alt="" src="/images/about/movie.jpg" />
       <div className="text marginTop">
         これからの動画コンテンツには、プロがつくるプレミア感とYouTubeなどに見られるアマチュア感を両立していかなければなりません。何より重要なのは、「つくりもの感」が取り除かれて、動画がより本物らしく見えることでしょう。
         <br />
@@ -237,7 +237,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const dispatch = useDispatch()
   const sp = useSelector((state: StateTypes) => state.media.sp)
 

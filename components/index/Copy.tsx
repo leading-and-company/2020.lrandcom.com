@@ -1,10 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import Noise from '~/components/base/Noise'
-import { styles } from '~/utils/styles'
 import { useSelector } from 'react-redux'
-import { StateTypes } from '~/store'
+import styled from 'styled-components'
+
+import Noise from '~/components/base/Noise'
 import Video from '~/components/base/Video'
+import { StateTypes } from '~/store'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   className: string
@@ -13,7 +14,7 @@ type ComponentProps = {
   sp: boolean
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="videoWrapper">
       {(props.sp && (
@@ -82,7 +83,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const sp = useSelector((state: StateTypes) => state.media.sp)
   return <StyledComponent sp={sp} {...props} />
 }

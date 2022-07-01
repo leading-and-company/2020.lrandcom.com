@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSlug, setUpperLeft } from '~/store/header'
-import Line from '~/components/index/Line'
+import styled from 'styled-components'
+
+import Head from '~/components/base/Head'
+import Contact from '~/components/index/Contact'
 import Copy from '~/components/index/Copy'
+import Line from '~/components/index/Line'
+import OurClient from '~/components/index/OurClient'
 import SectionPc from '~/components/index/SectionPc'
 import SectionSp from '~/components/index/SectionSp'
-import OurClient from '~/components/index/OurClient'
-import Contact from '~/components/index/Contact'
-import { config } from '~/utils/config'
 import { usePageScroll } from '~/hooks/usePageScroll'
 import { StateTypes } from '~/store'
+import { setSlug, setUpperLeft } from '~/store/header'
+import { config } from '~/utils/config'
 import { styles } from '~/utils/styles'
-import Head from '~/components/base/Head'
 
 type ContainerProps = {}
 type ComponentProps = {
@@ -20,11 +21,11 @@ type ComponentProps = {
   sp: boolean
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <Head
-      title="リーディング＆カンパニー株式会社"
       image={`${config.url.production}/images/base/ogp.png`}
+      title="リーディング＆カンパニー株式会社"
       type="website"
     />
     {!props.sp && <Line className="line" />}
@@ -34,31 +35,31 @@ const Component: React.FC<ComponentProps> = props => (
         <>
           <div className="divider" />
           <SectionSp
-            className="section"
-            title={config.index.writing.title}
-            description={config.index.writing.description}
             button={config.index.writing.button}
+            className="section"
+            description={config.index.writing.description}
             link={{
+              as: '/articles/create_contents',
               href: '/articles/[id]',
-              as: '/articles/create_contents'
             }}
             src={`${config.index.writing.src}/mobile.mp4`}
+            title={config.index.writing.title}
           />
           <div className="divider" />
           <div className="divider" />
           <SectionSp
             className="section"
-            title={config.index.website.title}
             description={config.index.website.description}
             src={`${config.index.website.src}/mobile.mp4`}
+            title={config.index.website.title}
           />
           <div className="divider" />
           <div className="divider" />
           <SectionSp
             className="section"
-            title={config.index.film.title}
             description={config.index.film.description}
             src={`${config.index.film.src}/mobile.mp4`}
+            title={config.index.film.title}
           />
           <div className="divider" />
           <div className="divider" />
@@ -66,27 +67,27 @@ const Component: React.FC<ComponentProps> = props => (
       )) || (
         <>
           <SectionPc
-            className="section"
-            title={config.index.writing.title}
-            description={config.index.writing.description}
             button={config.index.writing.button}
-            src={`${config.index.writing.src}/pc.mp4`}
+            className="section"
+            description={config.index.writing.description}
             link={{
+              as: '/articles/create_contents',
               href: '/articles/[id]',
-              as: '/articles/create_contents'
             }}
+            src={`${config.index.writing.src}/pc.mp4`}
+            title={config.index.writing.title}
           />
           <SectionPc
             className="section"
-            title={config.index.website.title}
             description={config.index.website.description}
             src={`${config.index.website.src}/pc.mp4`}
+            title={config.index.website.title}
           />
           <SectionPc
             className="section"
-            title={config.index.film.title}
             description={config.index.film.description}
             src={`${config.index.film.src}/pc.mp4`}
+            title={config.index.film.title}
           />
         </>
       )}
@@ -157,10 +158,10 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const dispatch = useDispatch()
   dispatch(setSlug('LEADING & COMPANY'))
-  dispatch(setUpperLeft({ type: 'logo', to: '/', text: '' }))
+  dispatch(setUpperLeft({ text: '', to: '/', type: 'logo' }))
   usePageScroll()
 
   const sp = useSelector((state: StateTypes) => state.media.sp)
@@ -185,7 +186,7 @@ const Container: React.FC<ContainerProps> = props => {
   const _props = {
     className: 'index',
     sp,
-    ...props
+    ...props,
   }
   return <StyledComponent {..._props} />
 }

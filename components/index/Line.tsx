@@ -8,10 +8,10 @@ type ComponentProps = {
   gaugeRef: React.MutableRefObject<HTMLDivElement | null>
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="trace" />
-    <div className="gauge" ref={props.gaugeRef} />
+    <div ref={props.gaugeRef} className="gauge" />
   </div>
 )
 
@@ -35,7 +35,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const gaugeRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const page = document.getElementById('page')
@@ -43,8 +43,9 @@ const Container: React.FC<ContainerProps> = props => {
       const scrollMax = page.scrollWidth - page.clientWidth
       const onscroll = (): void => {
         if (gaugeRef.current) {
-          gaugeRef.current.style.transform = `scaleX(${page.scrollLeft /
-            scrollMax})`
+          gaugeRef.current.style.transform = `scaleX(${
+            page.scrollLeft / scrollMax
+          })`
         }
       }
       page.addEventListener('scroll', onscroll)

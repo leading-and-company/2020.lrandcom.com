@@ -1,24 +1,25 @@
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
+
 import Button from '~/components/base/Button'
 import IncludeBr from '~/components/base/IncludeBr'
 import Video from '~/components/base/Video'
-import Link from 'next/link'
 
 type ContainerProps = {
+  button?: string
   className: string
-  title: string
   description: string
   link?: {
-    href: string
     as: string
+    href: string
   }
-  button?: string
   src: string
+  title: string
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="title">{props.title}</div>
     <div className="videoWrapper">
@@ -26,7 +27,7 @@ const Component: React.FC<ComponentProps> = props => (
     </div>
     <IncludeBr className="description" text={props.description} />
     {props.button && (
-      <Link href={props.link?.href || ''} as={props.link?.as || ''}>
+      <Link as={props.link?.as || ''} href={props.link?.href || ''}>
         <a>
           <Button className="button">{props.button}</Button>
         </a>
@@ -60,7 +61,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

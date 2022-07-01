@@ -1,11 +1,16 @@
-/* eslint-disable @typescript-eslint/class-name-casing */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GA_TRACKING_ID } from '~/lib/gtag'
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import Document, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document'
 import * as React from 'react'
 import { ServerStyleSheet } from 'styled-components'
+
+import { GA_TRACKING_ID } from '~/lib/gtag'
 
 class _Document extends Document<{}> {
   static async getInitialProps(ctx: DocumentContext) {
@@ -32,15 +37,16 @@ class _Document extends Document<{}> {
     } finally {
       sheet.seal()
     }
-  }render(): React.ReactElement {
+  }
+  render(): React.ReactElement {
     return (
       <Html lang="ja">
         <Head>
           <link
-            rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap"
+            rel="stylesheet"
           />
-          <link rel="stylesheet" href="https://use.typekit.net/ubu5lwf.css" />
+          <link href="https://use.typekit.net/ubu5lwf.css" rel="stylesheet" />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
@@ -54,7 +60,7 @@ class _Document extends Document<{}> {
             gtag('config', '${GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
-          `
+          `,
             }}
           />
         </Head>

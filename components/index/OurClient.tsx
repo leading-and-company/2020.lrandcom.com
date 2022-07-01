@@ -1,15 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { styles } from '~/utils/styles'
-import { config } from '~/utils/config'
+
 import Card from '~/components/index/card'
+import { config } from '~/utils/config'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   className: string
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="head">
       <div className="title">クライアント</div>
@@ -74,7 +75,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

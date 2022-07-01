@@ -1,6 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { config } from '~/utils/config'
 
 type ContainerProps = {
@@ -8,7 +9,7 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <FontAwesomeIcon className="circle" icon={config.icons.circle} />
     <FontAwesomeIcon className="circle" icon={config.icons.circle} />
@@ -32,7 +33,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

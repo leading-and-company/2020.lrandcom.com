@@ -6,7 +6,7 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="inner" />
   </div>
@@ -52,7 +52,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

@@ -1,24 +1,26 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import styled from 'styled-components'
+
 import { StateTypes } from '~/store'
-import Logo from './logo'
-import Back from './back'
 import { styles } from '~/utils/styles'
+
+import Back from './back'
+import Logo from './logo'
 
 type ContainerProps = {
   className: string
 }
 type ComponentProps = {
-  type: string
-  to: string
   text: string
+  to: string
+  type: string
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     {(props.type === 'logo' && <Logo className="logo" />) || (
-      <Back className="back" to={props.to} text={props.text} />
+      <Back className="back" text={props.text} to={props.to} />
     )}
   </div>
 )
@@ -38,13 +40,13 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const upperLeft = useSelector((state: StateTypes) => state.header.upperLeft)
   return (
     <StyledComponent
-      type={upperLeft.type}
-      to={upperLeft.to}
       text={upperLeft.text}
+      to={upperLeft.to}
+      type={upperLeft.type}
       {...props}
     />
   )

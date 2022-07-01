@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import { styles } from '~/utils/styles'
 
 type ContainerProps = {
@@ -7,11 +8,11 @@ type ContainerProps = {
   text: string
 }
 type ComponentProps = {
-  splitted: string[]
   last: number
+  splitted: string[]
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     {props.splitted.map((sentence, index) => (
       <React.Fragment key={index}>
@@ -45,10 +46,10 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const splitted = props.text.split('\n')
   const last = splitted.length - 1
-  return <StyledComponent splitted={splitted} last={last} {...props} />
+  return <StyledComponent last={last} splitted={splitted} {...props} />
 }
 
 export default Container

@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+
 import { useObserve } from '~/hooks/useObserve'
 import { animations } from '~/utils/animations'
 
@@ -8,23 +9,23 @@ type ContainerProps = {
   src: string
 }
 type ComponentProps = {
+  display: boolean
   refs: {
     root: React.MutableRefObject<HTMLDivElement | null>
     video: React.MutableRefObject<HTMLVideoElement | null>
   }
-  display: boolean
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
-  <div className={props.className} ref={props.refs.root}>
+const Component: React.FC<ComponentProps> = (props) => (
+  <div ref={props.refs.root} className={props.className}>
     {props.display && (
       <video
         ref={props.refs.video}
-        src={props.src}
-        preload="none"
+        loop
         muted
         playsInline
-        loop
+        preload="none"
+        src={props.src}
       />
     )}
   </div>
@@ -40,18 +41,18 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const [display, setDisplay] = useState(false)
   const refs = {
     root: useRef<HTMLDivElement>(null),
-    video: useRef<HTMLVideoElement>(null)
+    video: useRef<HTMLVideoElement>(null),
   }
   useObserve({
-    ref: refs.root,
+    deps: [refs.root, display],
     observeIn: () => {
       if (!display) setDisplay(true)
     },
-    deps: [refs.root, display]
+    ref: refs.root,
   })
   useEffect(() => {
     if (display && refs.root.current && refs.video.current) {
@@ -64,7 +65,7 @@ const Container: React.FC<ContainerProps> = props => {
       })
     }
   }, [display, refs.root, refs.video])
-  return <StyledComponent refs={refs} display={display} {...props} />
+  return <StyledComponent display={display} refs={refs} {...props} />
 }
 
 export default Container

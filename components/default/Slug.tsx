@@ -1,6 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import styled from 'styled-components'
+
 import { StateTypes } from '~/store'
 import { styles } from '~/utils/styles'
 
@@ -11,7 +12,7 @@ type ComponentProps = {
   slug: string
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>{props.slug}</div>
 )
 
@@ -20,7 +21,7 @@ const StyledComponent = styled(Component)`
   ${styles.mixins.logoStyle}
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const slug = useSelector((state: StateTypes) => state.header.slug)
   return <StyledComponent slug={slug} {...props} />
 }

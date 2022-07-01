@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+
 import ArrowRight from '~/components/base/ArrowRight'
 import { styles } from '~/utils/styles'
 
@@ -9,7 +10,7 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <Link href="/articles">
       <a>
@@ -46,7 +47,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

@@ -1,31 +1,32 @@
+import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
+
+import { useEffectAsync } from '~/hooks/useEffectAsync'
+import { useObserve } from '~/hooks/useObserve'
 import { ArticleTypes } from '~/types'
+import { animations } from '~/utils/animations'
 import { functions } from '~/utils/functions'
 import { styles } from '~/utils/styles'
-import { useObserve } from '~/hooks/useObserve'
-import { animations } from '~/utils/animations'
-import { useEffectAsync } from '~/hooks/useEffectAsync'
-import Link from 'next/link'
 
 type ContainerProps = {
-  className: string
   article: ArticleTypes
+  className: string
 }
 type ComponentProps = {
+  display: boolean
   refs: {
     root: React.MutableRefObject<HTMLDivElement | null>
   }
-  display: boolean
 } & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
-  <div className={props.className} ref={props.refs.root}>
+const Component: React.FC<ComponentProps> = (props) => (
+  <div ref={props.refs.root} className={props.className}>
     {props.display && (
-      <Link href="/articles/[id]" as={`/articles/${props.article.id}`}>
+      <Link as={`/articles/${props.article.id}`} href="/articles/[id]">
         <a>
           <div className="thumbnail">
-            <img src={props.article.thumbnail.url} alt="" />
+            <img alt="" src={props.article.thumbnail.url} />
           </div>
           <div className="title">{props.article.title}</div>
           <div className="publishedAt">
@@ -81,32 +82,32 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   const [display, setDisplay] = useState(false)
 
   const refs = {
-    root: useRef<HTMLDivElement>(null)
+    root: useRef<HTMLDivElement>(null),
   }
 
   useObserve({
-    ref: refs.root,
+    deps: [refs.root, display],
     observeIn: () => {
       if (!display) setDisplay(true)
     },
-    deps: [refs.root, display]
+    ref: refs.root,
   })
 
   useEffectAsync({
+    deps: [display, refs.root],
     effect: () => {
       if (display && refs.root.current) {
         animations.opacity(refs.root.current, 1, 1, 'InOut')
         animations.y(refs.root.current, 0, 2, 'Out')
       }
     },
-    deps: [display, refs.root]
   })
 
-  return <StyledComponent refs={refs} display={display} {...props} />
+  return <StyledComponent display={display} refs={refs} {...props} />
 }
 
 export default Container

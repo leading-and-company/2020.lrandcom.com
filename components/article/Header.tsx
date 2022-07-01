@@ -1,20 +1,21 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
-import { styles } from '~/utils/styles'
-import { config } from '~/utils/config'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import Author from '~/components/article/Author'
+import { config } from '~/utils/config'
 import { functions } from '~/utils/functions'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   className: string
-  title: string
-  thumbnail: string
   publishedAt: string
+  thumbnail: string
+  title: string
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="thumbnail">
       <img src={props.thumbnail} />
@@ -96,7 +97,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

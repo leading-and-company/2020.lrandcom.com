@@ -7,13 +7,13 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
-  <img className={props.className} src={props.src} decoding="async" />
+const Component: React.FC<ComponentProps> = (props) => (
+  <img className={props.className} decoding="async" src={props.src} />
 )
 
 const StyledComponent = styled(Component)``
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

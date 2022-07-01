@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import Heading from '~/components/about/heading'
 import { config } from '~/utils/config'
 import { styles } from '~/utils/styles'
@@ -9,7 +10,7 @@ type ContainerProps = {
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <Heading className="heading">会社概要</Heading>
     <div className="body">
@@ -64,7 +65,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 

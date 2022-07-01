@@ -1,16 +1,17 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
+
+import ABlank from '~/components/base/ABlank'
 import Img from '~/components/base/Img'
 import { config } from '~/utils/config'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ABlank from '~/components/base/ABlank'
 
 type ContainerProps = {
   className: string
 }
 type ComponentProps = {} & ContainerProps
 
-const Component: React.FC<ComponentProps> = props => (
+const Component: React.FC<ComponentProps> = (props) => (
   <div className={props.className}>
     <div className="thumb">
       <Img className="img" src="/images/article/natsume.jpg" />
@@ -77,7 +78,7 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const Container: React.FC<ContainerProps> = props => {
+const Container: React.FC<ContainerProps> = (props) => {
   return <StyledComponent {...props} />
 }
 
