@@ -94,6 +94,10 @@ const StyledComponent = styled(Component)`
     ${styles.media.sp} {
       height: 9.5rem;
     }
+    > svg {
+      width: 1.5rem;
+      height: auto;
+    }
   }
 `
 
