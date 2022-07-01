@@ -102,6 +102,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles: filtered
     },
-    unstable_revalidate: 10
+    revalidate: 10
   }
 }

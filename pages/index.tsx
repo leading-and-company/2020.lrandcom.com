@@ -168,7 +168,7 @@ const Container: React.FC<ContainerProps> = props => {
   useEffect(() => {
     const page = document.getElementById('page')
     if (page) {
-      const onwheel = (e: MouseWheelEvent): void => {
+      const onwheel = (e: WheelEvent) => {
         page.scrollLeft += e.deltaY
       }
       if (sp) {

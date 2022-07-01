@@ -163,14 +163,13 @@ export const getStaticProps: GetStaticProps = async context => {
       publishedAt,
       body
     },
-    unstable_revalidate: 10
+    revalidate: 10
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await api.getArticles()
-  const paths = articles.map(article => {
-    return `/articles/${article.id}`
-  })
-  return { paths, fallback: false }
+  return {
+    fallback: 'blocking',
+    paths: [],
+  }
 }
