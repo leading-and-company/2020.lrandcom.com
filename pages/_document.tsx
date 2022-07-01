@@ -3,25 +3,36 @@
 import { GA_TRACKING_ID } from '~/lib/gtag'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import * as React from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
 class _Document extends Document<{}> {
-  static async getInitialProps(ctx: any) {
-    // Step 1: Create an instance of ServerStyleSheet
+  static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
-    // Step 2: Retrieve styles from components in the page
-    const page = ctx.renderPage((App: any) => (props: any) =>
-      sheet.collectStyles(<App {...props} />)
-    )
-    // Step 3: Extract the styles as <style> tags
-    const styleTags = sheet.getStyleElement()
-    // Step 4: Pass styleTags as a prop
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps, ...page, styleTags }
-  }
-  render(): React.ReactElement {
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
+    }
+  }render(): React.ReactElement {
     return (
       <Html lang="ja">
         <Head>
