@@ -78,6 +78,10 @@ const StyledComponent = styled(Component)`
       margin-top: 3rem;
       font-size: 2rem;
     }
+    > svg {
+      width: 1rem;
+      height: auto;
+    }
   }
   > * > a > span {
     ${styles.mixins.logoStyle}
