@@ -11,7 +11,6 @@ import { StateTypes } from '~/store'
 import { setSlug } from '~/store/header'
 import { ArticleTypes } from '~/types'
 import { config } from '~/utils/config'
-import { request } from '~/utils/request'
 import { styles } from '~/utils/styles'
 
 type ContainerProps = {
