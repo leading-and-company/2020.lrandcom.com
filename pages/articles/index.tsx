@@ -11,6 +11,7 @@ import { StateTypes } from '~/store'
 import { setSlug } from '~/store/header'
 import { ArticleTypes } from '~/types'
 import { config } from '~/utils/config'
+import { request } from '~/utils/request'
 import { styles } from '~/utils/styles'
 
 type ContainerProps = {
@@ -89,18 +90,12 @@ const Container: React.FC<ContainerProps> = (props) => {
   dispatch(setSlug('/ARTICLES'))
   usePageScroll()
   const sp = useSelector((state: StateTypes) => state.media.sp)
-
-  React.useEffect(() => {
-    console.log({ date: props.date })
-  }, [props.date])
-
   return <StyledComponent className="articles" sp={sp} {...props} />
 }
 
 export default Container
 
 export const getStaticProps: GetStaticProps = async () => {
-  const date = new Date()
   const articles = await api.getArticles()
   const filtered = articles.filter((article: ArticleTypes) => {
     return article.hide === false
@@ -108,7 +103,6 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       articles: filtered,
-      date: date.toLocaleString(),
     },
     revalidate: 10,
   }
