@@ -74,6 +74,10 @@ const StyledComponent = styled(Component)`
     li {
       margin-left: 2.5rem;
       font-size: 1.5rem;
+      svg {
+        width: 1.5rem;
+        height: auto;
+      }
     }
   }
 `
