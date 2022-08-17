@@ -22,7 +22,10 @@ const Component: React.FC<ComponentProps> = (props) => {
   const { asPath } = useRouter()
 
   const show = useMemo(() => {
-    return asPath !== '/articles/starbucks_founders'
+    return (
+      asPath !== '/articles/starbucks_founders' &&
+      asPath !== '/articles/library'
+    )
   }, [asPath])
 
   return (
@@ -40,11 +43,11 @@ const Component: React.FC<ComponentProps> = (props) => {
       />
       {show && (
         <div className="banner">
-          <div className="title">本を出版しました！</div>
+          <div className="title">本を出版しています！</div>
           <div className="text">
-            2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
+            「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」
           </div>
-          <Link as="/articles/starbucks_founders" href="/articles/[id]">
+          <Link as="/articles/library" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
@@ -54,11 +57,11 @@ const Component: React.FC<ComponentProps> = (props) => {
       <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
       {show && (
         <div className="banner">
-          <div className="title">Kindleで本を出版しました！</div>
+          <div className="title">本を出版しています！</div>
           <div className="text">
-            2021年10月に「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」という本を出版致しました。
+            「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」
           </div>
-          <Link as="/articles/starbucks_founders" href="/articles/[id]">
+          <Link as="/articles/library" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
