@@ -30,7 +30,7 @@ const Component: React.FC<ComponentProps> = (props) => (
           </div>
           <div className="title">{props.article.title}</div>
           <div className="publishedAt">
-            {functions.date(props.article.publishedAt)}
+            {functions.date(props.article.published)}
           </div>
         </a>
       </Link>

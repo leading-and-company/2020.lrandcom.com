@@ -37,7 +37,7 @@ const Component: React.FC<ComponentProps> = (props) => {
       />
       <Header
         className="header"
-        publishedAt={props.publishedAt}
+        publishedAt={props.published}
         thumbnail={props.thumbnail.url}
         title={props.title}
       />
@@ -155,13 +155,15 @@ export default Container
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id
-  const { body, publishedAt, thumbnail, title } = await api.getArticle({
-    id: (id as string) || '',
-  })
+  const { body, published, publishedAt, thumbnail, title } =
+    await api.getArticle({
+      id: (id as string) || '',
+    })
   return {
     props: {
       body,
       id: id || '',
+      published,
       publishedAt,
       thumbnail,
       title,

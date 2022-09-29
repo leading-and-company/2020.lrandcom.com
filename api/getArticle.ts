@@ -6,5 +6,6 @@ export default async ({ id }: { id: string }): Promise<ArticleTypes> => {
   const article = await request.get(`/articles/${id}`, {
     headers: { 'X-MICROCMS-API-KEY': MICROCMS_KEY },
   })
+  console.log({ article })
   return article
 }
