@@ -1,12 +1,13 @@
 export type ArticleTypes = {
-  id: string
+  body: string
   createdAt: string
-  updatedAt: string
-  title: string
+  hide: boolean
+  id: string
+  published: string
+  publishedAt: string
   thumbnail: {
     url: string
   }
-  publishedAt: string
-  body: string
-  hide: boolean
+  title: string
+  updatedAt: string
 }
