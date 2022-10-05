@@ -26,7 +26,7 @@ const Component: React.FC<ComponentProps> = (props) => (
       <Link as={`/articles/${props.article.id}`} href="/articles/[id]">
         <a>
           <div className="thumbnail">
-            <img alt="" src={props.article.thumbnail.url} />
+            <img alt="" src={props.article.thumbnail?.url} />
           </div>
           <div className="title">{props.article.title}</div>
           <div className="publishedAt">

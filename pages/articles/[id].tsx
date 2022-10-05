@@ -165,7 +165,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       id: id || '',
       published,
       publishedAt,
-      thumbnail,
+      thumbnail: thumbnail || { url: '' },
       title,
     },
     revalidate: 10,
