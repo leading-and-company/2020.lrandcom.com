@@ -103,6 +103,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles: filtered,
     },
-    revalidate: 10,
+    revalidate: 1,
   }
 }
