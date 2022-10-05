@@ -95,6 +95,7 @@ const Container: React.FC<ContainerProps> = (props) => {
 export default Container
 
 export const getStaticProps: GetStaticProps = async () => {
+  // TODO: 100記事のみキャッシュ、それ以降はuseEffectで取得
   const articles = await api.getArticles()
   const filtered = articles.filter((article: ArticleTypes) => {
     return article.hide === false
