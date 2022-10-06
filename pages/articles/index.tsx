@@ -1,3 +1,4 @@
+import { log } from 'console'
 import { GetStaticProps } from 'next'
 import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +16,7 @@ import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   articles: ArticleTypes[]
+  articles2: ArticleTypes[]
   date: string
 }
 type Props = {
@@ -30,6 +32,12 @@ const Component: React.FC<Props> = (props) => (
       type="website"
     />
     {props.articles.map((article) => (
+      <React.Fragment key={article.id}>
+        {props.sp && <div className="divider" />}
+        <Article article={article} className="article" />
+      </React.Fragment>
+    ))}
+    {props.articles2.map((article) => (
       <React.Fragment key={article.id}>
         {props.sp && <div className="divider" />}
         <Article article={article} className="article" />
@@ -89,20 +97,39 @@ const Container: React.FC<ContainerProps> = (props) => {
   dispatch(setSlug('/ARTICLES'))
   usePageScroll()
   const sp = useSelector((state: StateTypes) => state.media.sp)
-  return <StyledComponent className="articles" sp={sp} {...props} />
+  const [articles2, setArticles2] = React.useState<ArticleTypes[]>([])
+
+  React.useEffect(() => {
+    ;(async () => {
+      const articles = (await api.getArticles()).filter(
+        (article: ArticleTypes) => {
+          return article.hide === false
+        }
+      )
+      setArticles2(articles.slice(100, articles.length))
+    })()
+  }, [props.articles])
+
+  return (
+    <StyledComponent
+      className="articles"
+      sp={sp}
+      {...props}
+      articles2={articles2}
+    />
+  )
 }
 
 export default Container
 
 export const getStaticProps: GetStaticProps = async () => {
-  // TODO: 100記事のみキャッシュ、それ以降はuseEffectで取得
   const articles = await api.getArticles()
   const filtered = articles.filter((article: ArticleTypes) => {
     return article.hide === false
   })
   return {
     props: {
-      articles: filtered,
+      articles: filtered.slice(0, 100),
     },
     revalidate: 1,
   }
