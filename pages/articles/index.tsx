@@ -131,6 +131,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles: filtered.slice(0, 100),
     },
-    revalidate: 1,
+    revalidate: 10,
   }
 }
