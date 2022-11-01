@@ -111,7 +111,7 @@ const StyledComponent = styled(Component)`
     margin: 6rem auto;
     width: 50rem;
     overflow: hidden;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     letter-spacing: 0.1rem;
     ${styles.media.sp} {
       width: 100%;
