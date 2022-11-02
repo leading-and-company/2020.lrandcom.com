@@ -9,7 +9,7 @@ export default async (): Promise<ArticleTypes[]> => {
   const articles = []
   for (let i = 0; i * 100 <= totalCount; i++) {
     const { contents } = await request.get(
-      `/articles?limit=${
+      `/articles?orders=-published&limit=${
         totalCount < (i + 1) * 100 ? totalCount - i * 100 : 100
       }&offset=${i * 100}`,
       { headers: { 'X-MICROCMS-API-KEY': MICROCMS_KEY } }
