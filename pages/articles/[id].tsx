@@ -24,7 +24,8 @@ const Component: React.FC<ComponentProps> = (props) => {
   const show = useMemo(() => {
     return (
       asPath !== '/articles/starbucks_founders' &&
-      asPath !== '/articles/library'
+      asPath !== '/articles/library' &&
+      asPath !== '/articles/multi_potential'
     )
   }, [asPath])
 
@@ -43,11 +44,11 @@ const Component: React.FC<ComponentProps> = (props) => {
       />
       {show && (
         <div className="banner">
-          <div className="title">本を出版しています！</div>
+          <div className="title">【NEW】新しい本をリリースしました！</div>
           <div className="text">
-            「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」
+            ５年後、あなたは４つの肩書を持つ。もう、ひとつの仕事にこだわり続ける人に未来はない。
           </div>
-          <Link as="/articles/library" href="/articles/[id]">
+          <Link as="/articles/multi_potential" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
@@ -57,11 +58,11 @@ const Component: React.FC<ComponentProps> = (props) => {
       <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
       {show && (
         <div className="banner">
-          <div className="title">本を出版しています！</div>
+          <div className="title">【NEW】新しい本をリリースしました！</div>
           <div className="text">
-            「なぜ、スターバックスの創業者は、ビジネスマンではなく多読の作家だったのか？」
+            ５年後、あなたは４つの肩書を持つ。もう、ひとつの仕事にこだわり続ける人に未来はない。
           </div>
-          <Link as="/articles/library" href="/articles/[id]">
+          <Link as="/articles/multi_potential" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
