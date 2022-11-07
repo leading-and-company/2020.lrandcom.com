@@ -62,11 +62,11 @@ const Component: React.FC<ComponentProps> = (props) => {
           <div className="text">
             ５年後、あなたは４つの肩書を持つ。もう、ひとつの仕事にこだわり続ける人に未来はない。
           </div>
-          <Link as="/articles/multi_potential" href="/articles/[id]">
+          <Liunk as="/articles/multi_potential" href="/articles/[id]">
             <a>
               <Button className="button">本の詳細はこちらから！！</Button>
             </a>
-          </Link>
+          </Liunk>
         </div>
       )}
     </div>
