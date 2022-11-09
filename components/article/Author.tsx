@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import ABlank from '~/components/base/ABlank'
 import Img from '~/components/base/Img'
 import { config } from '~/utils/config'
+import { styles } from '~/utils/styles'
 
 type ContainerProps = {
   className: string
@@ -48,8 +49,12 @@ const StyledComponent = styled(Component)`
   display: flex;
   align-items: center;
   > .thumb {
-    width: 3.5rem;
-    height: 3.5rem;
+    ${styles.media.sp} {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     overflow: hidden;
     img {
@@ -61,7 +66,10 @@ const StyledComponent = styled(Component)`
 
   > .name {
     margin-left: 3rem;
-    font-size: 1.4rem;
+    ${styles.media.sp} {
+      font-size: 1.5rem;
+    }
+    font-size: 1.7rem;
     line-height: 1;
     letter-spacing: 0.4rem;
     text-decoration: underline;
@@ -73,9 +81,15 @@ const StyledComponent = styled(Component)`
     }
     li {
       margin-left: 2.5rem;
-      font-size: 1.5rem;
+      ${styles.media.sp} {
+        font-size: 1.5rem;
+      }
+      font-size: 2rem;
       svg {
-        width: 1.5rem;
+        ${styles.media.sp} {
+          width: 1.5rem;
+        }
+        width: 2rem;
         height: auto;
       }
     }
