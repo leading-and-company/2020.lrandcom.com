@@ -67,11 +67,11 @@ const StyledComponent = styled(Component)`
   > .name {
     margin-left: 3rem;
     ${styles.media.sp} {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
-    font-size: 1.7rem;
+    font-size: 2rem;
     line-height: 1;
-    letter-spacing: 0.4rem;
+    Mads Mikkelsenletter-spacing: 0.4rem;
     text-decoration: underline;
   }
   > ul {
@@ -82,14 +82,14 @@ const StyledComponent = styled(Component)`
     li {
       margin-left: 2.5rem;
       ${styles.media.sp} {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
-      font-size: 2rem;
+      font-size: 2.2rem;
       svg {
         ${styles.media.sp} {
-          width: 1.5rem;
+          width: 1.7rem;
         }
-        width: 2rem;
+        width: 2.2rem;
         height: auto;
       }
     }
