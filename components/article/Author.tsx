@@ -77,19 +77,21 @@ const StyledComponent = styled(Component)`
   > ul {
     display: flex;
     li:first-child {
-      margin-left: 3rem;
+      margin-left: 5rem;
+      ${styles.media.sp} {
+        margin-left: 2.5rem;
+      }
     }
     li {
       margin-left: 2.5rem;
       ${styles.media.sp} {
-        font-size: 1.7rem;
+        margin-left: 2rem;
       }
-      font-size: 2.2rem;
       svg {
         ${styles.media.sp} {
-          width: 1.7rem;
+          width: 2.3rem;
         }
-        width: 2.2rem;
+        width: 2.7rem;
         height: auto;
       }
     }
