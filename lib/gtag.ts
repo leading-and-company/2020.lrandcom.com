@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-export const GA_TRACKING_ID = 'UA-47027645-1'
+export const GA_TRACKING_ID = 'G-8NMK4GW3JB'
 
 export const gtag = {
   // https://developers.google.com/analytics/devguides/collection/gtagjs/events
