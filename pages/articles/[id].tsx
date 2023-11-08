@@ -109,7 +109,7 @@ const StyledComponent = styled(Component)`
   > .body {
     background: rgba(255, 255, 255, 0.05);
     padding: 6rem 3rem;
-    margin: 6rem auto;
+    margin: 0 auto;
     width: 50rem;
     overflow: hidden;
     font-size: 1.9rem;
