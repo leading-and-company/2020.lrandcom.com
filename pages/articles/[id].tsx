@@ -42,7 +42,7 @@ const Component: React.FC<ComponentProps> = (props) => {
         thumbnail={props.thumbnail.url}
         title={props.title}
       />
-      {show && (
+      {/* {show && (
         <div className="banner">
           <div className="title">【NEW】新しい本をリリースしました！</div>
           <div className="text">
@@ -54,9 +54,9 @@ const Component: React.FC<ComponentProps> = (props) => {
             </a>
           </Link>
         </div>
-      )}
+      )} */}
       <div className="body" dangerouslySetInnerHTML={{ __html: props.body }} />
-      {show && (
+      {/* {show && (
         <div className="banner">
           <div className="title">【NEW】新しい本をリリースしました！</div>
           <div className="text">
@@ -68,7 +68,7 @@ const Component: React.FC<ComponentProps> = (props) => {
             </a>
           </Link>
         </div>
-      )}
+      )} */}
     </div>
   )
 }
